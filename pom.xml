@@ -12,6 +12,7 @@
   <name>services-parent</name>
   <modules>
     <module>customers</module>
+      <module>fraud</module>
   </modules>
 
   <properties>
