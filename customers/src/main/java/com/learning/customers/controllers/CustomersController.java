@@ -1,0 +1,20 @@
+package com.learning.customers.controllers;
+
+import com.learning.customers.dtos.CustomerRegistrationRequest;
+import com.learning.customers.services.CustomersService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@Slf4j
+@RestController
+@RequestMapping("/customers")
+public record CustomersController(CustomersService customersService) {
+    @PostMapping("/register")
+    void registerCustomer(@RequestBody CustomerRegistrationRequest customerRegistrationRequest){
+        log.info("customer data {}", customerRegistrationRequest);
+        customersService.registerCustomer(customerRegistrationRequest);
+    }
+}
