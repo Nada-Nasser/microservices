@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "fraud_check_history")
 public class FraudCheckHistory {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fraud_check_history_seq")
-    @SequenceGenerator(name = "fraud_check_history_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Integer id;
 
