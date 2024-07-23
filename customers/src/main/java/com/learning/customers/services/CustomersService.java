@@ -33,7 +33,7 @@ public class CustomersService {
         log.info("CUSTOMER ID: {}", customer.getId());
 
         FraudCheckResponse fraudResponse = restTemplate.getForObject(
-                "http://localhost:8091/api/v1/Fraud-check/{customerId}",
+                "http://FRAUD/api/v1/Fraud-check/{customerId}",
                 FraudCheckResponse.class,
                 customer.getId());
 
