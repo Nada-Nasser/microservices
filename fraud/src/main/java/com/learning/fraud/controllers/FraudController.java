@@ -1,6 +1,6 @@
 package com.learning.fraud.controllers;
 
-import com.learning.fraud.dtos.FraudCheckResponse;
+import com.learning.clients.fraud.FraudCheckResponse;
 import com.learning.fraud.services.FraudService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

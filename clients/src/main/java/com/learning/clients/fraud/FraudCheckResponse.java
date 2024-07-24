@@ -1,4 +1,4 @@
-package com.learning.customers.dtos;
+package com.learning.clients.fraud;
 
 import lombok.Builder;
 

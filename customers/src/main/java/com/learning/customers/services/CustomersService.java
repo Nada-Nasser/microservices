@@ -1,7 +1,8 @@
 package com.learning.customers.services;
 
+import com.learning.clients.fraud.FraudCheckResponse;
+import com.learning.clients.fraud.FraudClient;
 import com.learning.customers.dtos.CustomerRegistrationRequest;
-import com.learning.customers.dtos.FraudCheckResponse;
 import com.learning.customers.models.Customer;
 import com.learning.customers.repositories.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -16,11 +17,11 @@ import javax.transaction.Transactional;
 public class CustomersService {
 
     private final CustomerRepository customerRepository;
-    private final RestTemplate restTemplate;
+    private final FraudClient fraudClient;
 
-    public CustomersService(CustomerRepository customerRepository, RestTemplate restTemplate) {
+    public CustomersService(CustomerRepository customerRepository,FraudClient fraudClient) {
         this.customerRepository = customerRepository;
-        this.restTemplate = restTemplate;
+        this.fraudClient = fraudClient;
     }
 
     public void registerCustomer(CustomerRegistrationRequest customerRegistrationRequest){
@@ -32,10 +33,7 @@ public class CustomersService {
 
         log.info("CUSTOMER ID: {}", customer.getId());
 
-        FraudCheckResponse fraudResponse = restTemplate.getForObject(
-                "http://FRAUD/api/v1/Fraud-check/{customerId}",
-                FraudCheckResponse.class,
-                customer.getId());
+        FraudCheckResponse fraudResponse = fraudClient.checkIsFraudster(customer.getId());
 
         assert fraudResponse != null;
         if(Boolean.TRUE.equals(fraudResponse.isFraudster())){
