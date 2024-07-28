@@ -34,6 +34,12 @@ services:
     volumes:
       - pgadmin_data:/data/pgadmin
 
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+
 
 networks:
   postgres:
