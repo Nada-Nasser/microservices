@@ -18,6 +18,7 @@
         <module>clients</module>
         <module>notifications</module>
         <module>common-library</module>
+        <module>api-gateway</module>
     </modules>
 
     <properties>
