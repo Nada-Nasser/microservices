@@ -20,6 +20,6 @@ public class NotificationsController {
 
     @PostMapping("/create")
     public NotificationCreatedResponse createNotification(@RequestBody NotificationRequest notificationDTO){
-        return notificationsService.createNotification(notificationDTO.content(), notificationDTO.customerId());
+        return notificationsService.createNotification(notificationDTO);
     }
 }

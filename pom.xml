@@ -19,6 +19,7 @@
         <module>notifications</module>
         <module>common-library</module>
         <module>api-gateway</module>
+        <module>messaging</module>
     </modules>
 
     <properties>

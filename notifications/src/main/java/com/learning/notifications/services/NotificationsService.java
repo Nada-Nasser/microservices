@@ -1,6 +1,7 @@
 package com.learning.notifications.services;
 
 import com.learning.clients.notifications.NotificationCreatedResponse;
+import com.learning.clients.notifications.NotificationRequest;
 import com.learning.notifications.models.Notification;
 import com.learning.notifications.repositries.NotificationRepository;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,11 @@ public class NotificationsService {
         this.notificationRepository = notificationRepository;
     }
 
-    public NotificationCreatedResponse createNotification(String content, Integer customerId) {
+    public NotificationCreatedResponse createNotification(NotificationRequest notificationRequest) {
         LocalDateTime date = LocalDateTime.now();
         notificationRepository.save(Notification.builder()
-                .content(content)
-                        .customerId(customerId)
+                .content(notificationRequest.content())
+                        .customerId(notificationRequest.customerId())
                 .dateTime(date)
                 .build());
 
